@@ -67,7 +67,9 @@ function App() {
 		) as HTMLInputElement).value;
 		console.log(videoId, searchQuery);
 
-		const apiEndpoint = `https://cors-anywhere.herokuapp.com/https://www.googleapis.com/youtube/v3/commentThreads?key=AIzaSyAkWrpjeHtgzmIVAKLqQ0FNwkCNULuJ71E&part=snippet&videoId=${videoId}&searchTerms=${searchQuery}`;
+		const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
+
+		const apiEndpoint = `https://cors-anywhere.herokuapp.com/https://www.googleapis.com/youtube/v3/commentThreads?key=${apiKey}&part=snippet&videoId=${videoId}&searchTerms=${searchQuery}`;
 
 		const get = async (pageToken?: string, recDepth: number = 0) => {
 			let endpoint = apiEndpoint;
